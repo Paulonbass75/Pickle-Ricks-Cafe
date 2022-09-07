@@ -13,14 +13,14 @@ const firebaseConfig = {
   projectId: "after-chat",
   storageBucket: "after-chat.appspot.com",
   messagingSenderId: "745606054449",
-  appId: "1:745606054449:web:0084e3a9593d56f1720b10"
+  appId: "1:745606054449:web:0084e3a9593d56f1720b10",
   //Test config
   // apiKey: "AIzaSyDVcpocrg_YkZJyS13X57xyYxUOKS0UYCw",
   // authDomain: "chat-app-6d04f.firebaseapp.com",
   // projectId: "chat-app-6d04f",
   // storageBucket: "chat-app-6d04f.appspot.com",
   // messagingSenderId: "44224564755",
-  // appId: "1:44224564755:web:3d73b8009297aa1d9cf9e6"
+  // appId: "1:44224564755:web:3d73b8009297aa1d9cf9e6",
 };
 // init firebase
 firebase.initializeApp(firebaseConfig);

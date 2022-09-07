@@ -51,11 +51,13 @@ export default {
         });
       }
     });
-    // auto-scroll to bottom of messages
+
+    // auto-scroll to bottom of chat window
     const messages = ref(null);
     onUpdated(() => {
       messages.value.scrollTop = messages.value.scrollHeight;
     });
+
     return { error, documents, formattedDocuments, messages };
   },
 };
@@ -64,7 +66,7 @@ export default {
 <style scoped>
 .chat-window {
   background: #fafafa;
-  padding: 30px 20px;
+  padding: 20px 20px;
 }
 .single {
   overflow-x: hidden;
@@ -84,13 +86,13 @@ export default {
   margin-right: 6px;
 }
 .messages {
-  max-height: 300px;
+  max-height: 500px;
 
   overflow: auto;
 }
 
-.messages img{
-  width: 250px;
+.messages img {
+  width: 300px;
 }
 
 .image-with-text {
