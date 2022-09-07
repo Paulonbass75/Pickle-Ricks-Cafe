@@ -53,7 +53,6 @@ const login = async (email, password) => {
     // }
 
     error.value = null;
-    console.log(res);
     return res;
   } catch (err) {
     console.log(err);

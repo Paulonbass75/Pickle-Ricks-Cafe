@@ -4,7 +4,7 @@
     <div v-if="documents" class="messages" ref="messages">
       <div v-for="doc in formattedDocuments" :key="doc.id" class="single">
         <!-- Format for plain text -->
-        <div v-if="!doc.isImg">
+        <div v-if="!doc.containsImg">
           <span class="created-at">{{ doc.createdAt }}</span>
           <span class="name">{{ doc.name }}</span>
           <br />
@@ -13,14 +13,19 @@
           </span>
         </div>
         <!-- Format for gifs/images -->
-        <div v-if="doc.isImg">
+        <div v-if="doc.containsImg">
           <span class="created-at">{{ doc.createdAt }}</span>
           <span class="name">{{ doc.name }}</span>
           <br />
-          <span class="message">
-              <img :src="doc.gif" alt="">
-          </span>
+          <div class="message">
+            <img :src="doc.img" alt="" />
+          </div>
+          <br />
+          <div class="message">
+            {{ doc.message }}
+          </div>
         </div>
+        <!-- Format for Messages containing images -->
       </div>
     </div>
   </div>
@@ -64,7 +69,9 @@ export default {
 .single {
   overflow-x: hidden;
   word-wrap: normal;
-  margin: 18px 0;
+  margin: 0;
+  padding: 10px 5px;
+  border-top: 1px solid #999999;
 }
 .created-at {
   display: block;
@@ -82,12 +89,21 @@ export default {
   overflow: auto;
 }
 
-@media(max-width: 450px){
-  .chat-window{
+.messages img{
+  width: 250px;
+}
+
+.image-with-text {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 450px) {
+  .chat-window {
     padding: 0;
   }
-  .messages{
-    max-height: calc(100vh - 360px);
+  .messages {
+    max-height: calc(100vh - 400px);
     padding: 10px;
   }
 }

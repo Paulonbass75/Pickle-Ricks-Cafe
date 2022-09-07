@@ -1,10 +1,7 @@
 <template>
   <div class="gif-form">
-    <span class="x" @click="closeGif">
-      <span>&times;</span>
-    </span>
     <form @submit.prevent="">
-      <input class="gif-search" type="text" placeholder="Search Tenor" @keypress="searchGif" />
+      <input class="gif-search" type="text" placeholder="Search Tenor" @keyup="searchGif" />
     </form>
     <div class="gif-container">
       <div class="gif-wrapper">
@@ -34,14 +31,14 @@ export default {
         this.result = Response.data.results;
       });
     },
-    closeGif() {
-      let gifForm = document.querySelector(".gif-form");
-      let chatForm = document.querySelector(".chat-form");
-      let searchBar = document.querySelector(".gif-search");
-      gifForm.style.display = "none";
-      chatForm.style.display = "block";
-      searchBar.value = ""
-    },
+    // closeGif() {
+    //   let gifForm = document.querySelector(".gif-form");
+    //   let chatForm = document.querySelector(".chat-form");
+    //   let searchBar = document.querySelector(".gif-search");
+    //   gifForm.classList.toggle("show")
+    //   chatForm.style.display = "block";
+    //   searchBar.value = ""
+    // },
   },
   mounted() {
     let url = `https://g.tenor.com/v1/trending?key=SXYDVAHBNR9C&limit=50`;
@@ -61,11 +58,10 @@ export default {
     const submitGif = async (e) => {
       const chat = {
         name: user.value.displayName,
-        gif: e.target.src,
-        isImg: true,
+        img: e.target.src,
+        containsImg: true,
         createdAt: timestamp(),
       };
-      console.log(chat);
       await addDoc(chat);
       if (!error.value) {
         console.log(error);
@@ -103,15 +99,23 @@ input {
 
 .gif-form {
   display: none;
-  position: relative;
-  max-width: 960px;
+  position: absolute;
+  width: 100%;
+  bottom: 70px;
+  background: #3c3c3c;
+}
+
+.gif-form.show{
+  display: block;
 }
 .gif-container {
   position: absolute;
   background-color: #FAFAFA;
-  bottom: 130px;
+  bottom: 81px;
   max-width: 960px;
   left: 0;
+  border-top: 1px solid #000000;
+    box-shadow: 0px -1px 2px #000000;
 }
 
 .gif-wrapper {
@@ -141,6 +145,7 @@ input {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  color: #fafafa;
 }
 
 .x span {
@@ -151,12 +156,13 @@ input {
   text-align: center;
   width: 100%;
   margin: 0;
+  color: #ffffff;
 }
 
 @media(max-width: 450px){
   .gif-form{
     position: fixed;
-    bottom: 0;
+    bottom: 70px;
     width: 100%;
     background: #3c3c3c;
     overflow-x: hidden;
@@ -175,7 +181,7 @@ span.x{
 
 .gif-container{
   position: fixed;
-  bottom: 100px;
+  bottom: 170px;
   background: #3c3c3c;
 }
 .gif-wrapper{

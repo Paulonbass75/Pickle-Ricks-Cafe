@@ -43,7 +43,7 @@ nav {
 nav p {
   margin: 4px auto;
   font-size: 18px;
-  color: #444;
+  color: #ffffff;
 }
 nav p.email {
   font-size: 18px;
@@ -54,5 +54,9 @@ nav p.email {
     padding: 20px;
     border-bottom: 1px solid rgb(220, 220, 220);
   }
+
+  nav p {
+  color: #000;
+}
 }
 </style>

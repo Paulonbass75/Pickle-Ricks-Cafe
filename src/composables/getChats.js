@@ -12,7 +12,6 @@ const getCollection = (collection) => {
 
   const unSub = collectionRef.onSnapshot(
     (snap) => {
-      console.log(snap);
 
       let results = [];
       snap.docs.forEach((doc) => {
