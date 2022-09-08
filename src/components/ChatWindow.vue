@@ -55,7 +55,7 @@ export default {
     // auto-scroll to bottom of chat window
     const messages = ref(null);
     onUpdated(() => {
-      messages.value.scrollTop = messages.value.scrollHeight;
+      // messages.value.scrollTop = messages.value.scrollHeight;
     });
 
     return { error, documents, formattedDocuments, messages };
