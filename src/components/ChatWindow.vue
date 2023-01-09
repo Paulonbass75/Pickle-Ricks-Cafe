@@ -53,10 +53,28 @@ export default {
     });
 
     // auto-scroll to bottom of chat window
-    const messages = ref(null);
-    onUpdated(() => {
+    // const messages = ref(null);
+    // onUpdated(() => {
       // messages.value.scrollTop = messages.value.scrollHeight;
-    });
+    // });
+
+// chatGPT suggestion for auto scroll
+    function scrollDown() {
+  window.scrollBy(0, 50); // scroll down by 50 pixels
+}
+
+function startScrolling() {
+  intervalId = setInterval(scrollDown, 100); // scroll every 100 milliseconds
+}
+
+function stopScrolling() {
+  clearInterval(intervalId);
+}
+
+// add event listeners to the start and stop buttons
+document.getElementById('start-button').addEventListener('click', startScrolling);
+document.getElementById('stop-button').addEventListener('click', stopScrolling);
+
 
     return { error, documents, formattedDocuments, messages };
   },
